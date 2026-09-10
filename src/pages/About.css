@@ -1,0 +1,131 @@
+.section-heading--center { justify-content: center; }
+.section-rule--center { margin-left: auto; margin-right: auto; }
+.about__section-gap { margin-top: 3.5rem; }
+
+.about__intro {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__photo-frame {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  padding: 5px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 0 1px var(--border), 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.about__photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.about__para {
+  margin-bottom: 1.1rem;
+  font-size: 1.02rem;
+  text-align: left;
+}
+.about__para:last-child { margin-bottom: 0; }
+
+.orgs-marquee {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.orgs-marquee__label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1.1rem;
+}
+
+.orgs-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.orgs-marquee:hover .orgs-marquee__track { animation-play-state: paused; }
+
+.orgs-marquee__row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding-right: 3rem;
+}
+
+.orgs-marquee__item {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orgs-marquee__track { animation: none; }
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about__achievement-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text);
+  margin-top: 0.6rem;
+}
+
+.facts-list { margin: 0.6rem 0 0; }
+.facts-list__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+.facts-list__row:last-child { border-bottom: none; }
+.facts-list__row dt { color: var(--text-faint); margin: 0; }
+.facts-list__row dd { color: var(--text); margin: 0; font-weight: 500; }
+
+.about__education {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about__school { font-size: 1.35rem; margin-bottom: 0.5rem; }
+.about__degree { color: var(--gold); font-weight: 500; margin-bottom: 0.4rem; }
+.about__expected { font-size: 0.88rem; color: var(--text-faint); }
+
+.about__research {
+  display: block;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about__research-title { font-size: 1.15rem; margin-bottom: 0.6rem; line-height: 1.4; }
+.about__research-text { margin-top: 0.7rem; font-size: 0.92rem; }

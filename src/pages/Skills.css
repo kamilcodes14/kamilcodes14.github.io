@@ -1,0 +1,13 @@
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.skill-panel__title {
+  font-size: 1.15rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.skill-panel__items { display: flex; flex-wrap: wrap; gap: 0.5rem; }

@@ -1,0 +1,146 @@
+/* ---------- Flourish heading ---------- */
+.exp-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.exp-flourish__heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+.exp-flourish__heading h2 { font-size: 2rem; }
+
+.exp-flourish__line {
+  flex: 1;
+  max-width: 180px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong));
+}
+.exp-flourish__line:last-of-type {
+  background: linear-gradient(to left, transparent, var(--border-strong));
+}
+
+.exp-flourish__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.section-rule--center { margin-left: auto; margin-right: auto; margin-top: 1rem; }
+
+/* ---------- Timeline (desktop: alternating zigzag) ---------- */
+.exp-timeline {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.exp-timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--border-strong) 8%, var(--border-strong) 92%, transparent);
+  transform: translateX(-50%);
+}
+
+.exp-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: 2.75rem;
+}
+.exp-item:last-child { margin-bottom: 0; }
+
+.exp-item--right { margin-left: 50%; padding-left: 3rem; }
+.exp-item--left { margin-right: 50%; padding-right: 3rem; }
+
+.exp-item__badge {
+  position: absolute;
+  top: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-panel-raised);
+  z-index: 2;
+}
+.exp-item--right .exp-item__badge { left: -23px; }
+.exp-item--left .exp-item__badge { right: -23px; }
+
+.exp-item__card { width: 100%; }
+
+/* ---------- Card internals (unchanged visual language) ---------- */
+.exp-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.exp-card__org { font-size: 1.3rem; }
+.exp-card__role { color: var(--gold); font-weight: 500; margin-top: 0.25rem; }
+
+.exp-card__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  text-align: right;
+}
+.exp-card__period { font-size: 0.85rem; color: var(--text-faint); }
+.exp-card__period--current { color: var(--gold); font-weight: 600; }
+.exp-card__location { font-size: 0.8rem; color: var(--text-faint); }
+
+.exp-card__bullets {
+  margin: 0 0 1.1rem;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.exp-card__bullets li { font-size: 0.94rem; color: var(--text-muted); line-height: 1.6; }
+.exp-card__bullets li::marker { color: var(--gold); }
+
+.exp-card__tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* ---------- Mobile: collapse to single column, badge stays left ---------- */
+@media (max-width: 860px) {
+  .exp-flourish__line { max-width: 40px; }
+
+  .exp-timeline::before { left: 22px; }
+
+  .exp-item, .exp-item--right, .exp-item--left {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 3.25rem;
+    padding-right: 0;
+  }
+
+  .exp-item--right .exp-item__badge,
+  .exp-item--left .exp-item__badge {
+    left: 0;
+    right: auto;
+    width: 44px;
+    height: 44px;
+  }
+
+  .exp-card__meta { align-items: flex-start; text-align: left; }
+}
