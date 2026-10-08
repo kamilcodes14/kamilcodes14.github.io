@@ -52,7 +52,73 @@ export const education = {
   location: "Lahore, Pakistan",
   degree: "Bachelor of Science, Computer Science",
   expected: "Expected October 2028",
+  coursework: [
+    "Data Structures",
+    "Object Oriented Programming",
+    "Database Systems",
+    "Software Engineering",
+    "Computer Networks",
+    "Computer Architecture",
+    "Computer Organization and Assembly Language",
+    "Theory of Automata",
+    "Discrete Structures",
+    "Probability and Statistics",
+    "Calculus and Analytical Geometry",
+    "Applied Physics",
+  ],
 };
+
+export const certifications = [
+  {
+    title: "An introduction to exoplanets",
+    issuer: "The Open University · OpenLearn",
+    date: "8 October 2026",
+    dateTime: "2026-10-08",
+    credential: "Statement of Participation · 24-hour course",
+    description: "Exoplanet detection, transit methods, planetary properties and habitability.",
+    file: "/certificates/introduction-to-exoplanets.pdf",
+  },
+  {
+    title: "Unsolved problems in cosmology",
+    issuer: "The Open University · OpenLearn",
+    date: "8 October 2026",
+    dateTime: "2026-10-08",
+    credential: "Statement of Participation · 6-hour course",
+    description: "Hot Big Bang cosmology, dark matter, dark energy and inflation.",
+    file: "/certificates/unsolved-problems-in-cosmology.pdf",
+  },
+  {
+    title: "When Machines Stop Obeying",
+    issuer: "Eliva Press",
+    credential: "Certificate of Publication",
+    description: "Understanding AI, Autonomy, and the Limits of Human Control · ISBN 978-99993-5-529-2",
+    file: "/certificates/eliva-press-publication.pdf",
+  },
+];
+
+export const publications = [
+  {
+    id: "sandbox-security",
+    type: "Independent research · SSRN",
+    title: "When the Model Breaks the Sandbox: A Case Study of the July 2026 OpenAI–Hugging Face Autonomous Cyber Incident",
+    meta: "Posted 6 August 2026 · 9 pages",
+    description: "A qualitative case study examining sandbox escapes, specification gaming and containment gaps in autonomous AI systems, with discussion of AI safety and governance.",
+    tags: ["AI Security", "Autonomous Agents", "AI Safety", "AI Governance"],
+    href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7181179",
+    linkLabel: "Read paper on SSRN",
+  },
+  {
+    id: "when-machines-stop-obeying",
+    type: "Book · Eliva Press",
+    title: "When Machines Stop Obeying",
+    subtitle: "Understanding AI, Autonomy, and the Limits of Human Control",
+    meta: "ISBN 978-99993-5-529-2",
+    description: "A book exploring artificial intelligence, autonomy and the limits of human control.",
+    tags: ["Artificial Intelligence", "Autonomy", "Human Control"],
+    href: "/certificates/eliva-press-publication.pdf",
+    linkLabel: "View publication certificate (PDF)",
+  },
+];
 
 export const about = {
   bio: [
@@ -209,7 +275,10 @@ export const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 export const nav = [
   { path: "#home", label: "Home" },
   { path: "#about", label: "About" },
+  { path: "#education", label: "Education" },
   { path: "#experience", label: "Experience" },
+  { path: "#research", label: "Research" },
+  { path: "#certifications", label: "Certifications" },
   { path: "#projects", label: "Projects" },
   { path: "#skills", label: "Skills" },
   { path: "#contact", label: "Contact" },

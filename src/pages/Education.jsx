@@ -1,6 +1,7 @@
 import { education } from "../data/content";
-import { IconGrad } from "../components/Icons";
+import { IconGrad, IconBook } from "../components/Icons";
 import "./About.css";
+import "./Credentials.css";
 
 export default function Education() {
   return (
@@ -11,6 +12,12 @@ export default function Education() {
         <h3 className="about__school">{education.school}</h3>
         <p className="about__degree">{education.degree}</p>
         <p className="about__expected">{education.expected} · {education.location}</p>
+      </div>
+      <div className="bracket-panel coursework">
+        <h3 className="coursework__heading"><IconBook />Relevant Coursework</h3>
+        <ul className="coursework__list">
+          {education.coursework.map((course) => <li key={course}>{course}</li>)}
+        </ul>
       </div>
     </section>
   );

@@ -17,6 +17,23 @@ export function IconStar(props) {
   );
 }
 
+export function IconAward(props) {
+  return (
+    <svg {...base} width="24" height="24" {...props}>
+      <circle cx="12" cy="8" r="5" />
+      <path d="m8.5 12-1 9 4.5-3 4.5 3-1-9" />
+    </svg>
+  );
+}
+
+export function IconResearch(props) {
+  return (
+    <svg {...base} width="24" height="24" {...props}>
+      <path d="M9 3h6M10 3v7L4.5 20a.7.7 0 0 0 .6 1h13.8a.7.7 0 0 0 .6-1L14 10V3M7 16h10" />
+    </svg>
+  );
+}
+
 export function IconBook(props) {
   return (
     <svg {...base} width="20" height="20" {...props}>

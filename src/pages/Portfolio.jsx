@@ -6,6 +6,8 @@ import Experience from "./Experience";
 import Projects from "./Projects";
 import Skills from "./Skills";
 import Contact from "./Contact";
+import Research from "./Research";
+import Certifications from "./Certifications";
 
 export default function Portfolio() {
   return (
@@ -15,6 +17,8 @@ export default function Portfolio() {
       <Highlights />
       <Education />
       <Experience />
+      <Research />
+      <Certifications />
       <Projects />
       <Skills />
       <Contact />
