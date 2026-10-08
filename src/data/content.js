@@ -180,13 +180,22 @@ export const experience = [
 
 export const projects = [
   {
-    name: "Space Signal Receiver",
+    name: "SpaceMind — Space Research Assistant",
     tag: "Personal Project",
-    tech: ["Python", "NumPy", "Matplotlib", "Flask", "RTL-SDR", "RAG"],
+    tech: ["JavaScript", "Three.js", "Supabase", "PostgreSQL", "Groq", "Tavily"],
     blurb:
-      "A signal-detection pipeline modeled on real SETI/radio-astronomy software, with a de-doppler drift search — the technique turboSETI uses on Breakthrough Listen data — and a Flask UI for the waterfall plot, driven by a physical RTL2832U/FC0013 SDR receiver (22–1100 MHz). Includes a RAG-based research assistant that indexes SETI/radio-astronomy papers and the project's own logs for natural-language querying, with spectrogram images auto-captioned via Claude vision at ingest time.",
-    live: "https://friday-jpx4fu2im-kamilcodes14s-projects.vercel.app/",
-    github: "https://github.com/kamilcodes14",
+      "A space-research workspace with secure sign-in, private saved chats, searchable history, JSON export, and account, appearance, research and privacy settings. Auto, Web and Papers modes combine an imported paper corpus, Semantic Scholar abstracts and web search with source-linked answers, evidence warnings and citation checks. The hosted app uses Supabase Auth, Postgres with row-level security and Edge Functions, with an interactive Three.js universe and responsive mobile interface.",
+    live: "https://spacemind-frontend-pyke089mw-syed-kamil.vercel.app/",
+    github: "https://github.com/kamilcodes14/Spacemind",
+  },
+  {
+    name: "Space Signal Receiver with RAG",
+    tag: "Personal Project",
+    tech: ["Python", "NumPy", "Matplotlib", "Flask", "blimpy", "HDF5", "RAG"],
+    blurb:
+      "A Python prototype for narrowband signal analysis, combining linear frequency-drift search, waterfall visualizations and JSON run logs with CLI and Flask interfaces. Supports synthetic spectrograms and bounded Breakthrough Listen telescope-file selections through blimpy. The AI-assisted validation report documents 300 synthetic signal observations, 100 noise-only controls and recovery of the known Voyager 1 carrier in public Green Bank Telescope data. Includes an optional RAG assistant over documents and saved runs; physical RTL-SDR reception remains unvalidated.",
+    live: null,
+    github: "https://github.com/kamilcodes14/Space-Signal-Receiver-with-RAG",
   },
   {
     name: "Disease Prediction from Medical Data",
