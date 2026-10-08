@@ -185,7 +185,7 @@ export const projects = [
     tech: ["JavaScript", "Three.js", "Supabase", "PostgreSQL", "Groq", "Tavily"],
     blurb:
       "A space-research workspace with secure sign-in, private saved chats, searchable history, JSON export, and account, appearance, research and privacy settings. Auto, Web and Papers modes combine an imported paper corpus, Semantic Scholar abstracts and web search with source-linked answers, evidence warnings and citation checks. The hosted app uses Supabase Auth, Postgres with row-level security and Edge Functions, with an interactive Three.js universe and responsive mobile interface.",
-    live: "https://spacemind-frontend-pyke089mw-syed-kamil.vercel.app/",
+    live: "https://spacemind-frontend.vercel.app/",
     github: "https://github.com/kamilcodes14/Spacemind",
   },
   {
