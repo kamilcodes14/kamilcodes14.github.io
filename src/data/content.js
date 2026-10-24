@@ -53,22 +53,25 @@ export const education = {
   degree: "Bachelor of Science, Computer Science",
   expected: "Expected October 2028",
   coursework: [
+    "Multivariable Calculus (In progress)",
+    "Analysis of Algorithm (In progress)",
+    "Data Science Technology (In progress)",
     "Data Structures",
-    "Object Oriented Programming",
-    "Database Systems",
-    "Software Engineering",
-    "Computer Networks",
-    "Computer Architecture",
-    "Computer Organization and Assembly Language",
-    "Theory of Automata",
-    "Discrete Structures",
     "Probability and Statistics",
-    "Calculus and Analytical Geometry",
-    "Applied Physics",
+    "Discrete Structures",
   ],
 };
 
 export const certifications = [
+  {
+    title: "Countless Worlds in Our Solar System: Asteroids, Comets, and Meteorites",
+    issuer: "Arizona State University · CareerCatalyst",
+    date: "23 October 2026",
+    dateTime: "2026-10-23",
+    credential: "Certificate of Completion",
+    description: "Exploring asteroids, comets, and meteorites in our solar system.",
+    file: "/certificates/countless-worlds-solar-system.pdf",
+  },
   {
     title: "An introduction to exoplanets",
     issuer: "The Open University · OpenLearn",
