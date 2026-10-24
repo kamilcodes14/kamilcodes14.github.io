@@ -1,5 +1,4 @@
 import Home from "./Home";
-import Highlights from "./Highlights";
 import Education from "./Education";
 import About from "./About";
 import Experience from "./Experience";
@@ -14,7 +13,6 @@ export default function Portfolio() {
     <>
       <Home />
       <About />
-      <Highlights />
       <Education />
       <Experience />
       <Research />
