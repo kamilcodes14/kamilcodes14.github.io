@@ -53,12 +53,14 @@ export const education = {
   degree: "Bachelor of Science, Computer Science",
   expected: "Expected October 2028",
   coursework: [
-    "Multivariable Calculus (In progress)",
-    "Analysis of Algorithm (In progress)",
-    "Data Science Technology (In progress)",
+    "Multivariable Calculus",
+    "Analysis of Algorithm",
+    "Data Science Technology",
     "Data Structures",
     "Probability and Statistics",
     "Discrete Structures",
+    "Applied Physics",
+    "Object Oriented Programming",
   ],
 };
 
