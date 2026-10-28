@@ -43,16 +43,18 @@
 
 .contact__submit { align-self: flex-start; }
 
-.contact__error {
-  color: #E8A87C;
-  font-size: 0.85rem;
-  margin-top: 1rem;
-}
-
-.contact__success p {
-  margin-bottom: 1.25rem;
+.contact__help, .contact__notice {
+  color: var(--text-muted);
+  font-size: 0.88rem;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
+.contact__help { margin-bottom: 1.5rem; }
+.contact__help a { color: var(--gold); }
+.contact__notice:not(:empty) { margin-top: 1rem; }
+.contact__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.contact__draft { margin-top: 1rem; }
+.contact__draft summary { cursor: pointer; color: var(--gold); margin-bottom: 1rem; }
 
 .contact__socials {
   display: flex;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { profile, FORMSPREE_ENDPOINT } from "../data/content";
+import { profile } from "../data/content";
 import { IconMail } from "../components/Icons";
 import "./Contact.css";
 
@@ -20,31 +20,47 @@ function LinkedInIcon() {
   );
 }
 
-const STATUS = { IDLE: "idle", SENDING: "sending", SUCCESS: "success", ERROR: "error" };
-
 export default function Contact() {
-  const [status, setStatus] = useState(STATUS.IDLE);
+  const [notice, setNotice] = useState("");
+  const [draft, setDraft] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    setStatus(STATUS.SENDING);
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form),
-      });
-      if (res.ok) {
-        setStatus(STATUS.SUCCESS);
-        form.reset();
-      } else {
-        setStatus(STATUS.ERROR);
-      }
-    } catch {
-      setStatus(STATUS.ERROR);
+  function prepareDraft(form) {
+    const fields = new FormData(form);
+    const name = String(fields.get("name") || "").trim();
+    const email = String(fields.get("email") || "").trim();
+    const message = String(fields.get("message") || "").trim();
+    if (!name || !email || !message) {
+      setNotice("Please enter your name, email address, and message.");
+      return null;
     }
-  };
+    return {
+      subject: `Portfolio enquiry from ${name}`,
+      body: `${message}\n\nFrom: ${name}\nReply email: ${email}`,
+    };
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const next = prepareDraft(event.currentTarget);
+    if (!next) return;
+    setDraft(next);
+    setNotice("Your email draft is ready. Complete sending in your email app. If it did not open, use Copy message below.");
+    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(next.subject)}&body=${encodeURIComponent(next.body)}`;
+  }
+
+  async function copyMessage(event) {
+    const form = event.currentTarget.form;
+    if (!form.reportValidity()) return;
+    const next = prepareDraft(form);
+    if (!next) return;
+    setDraft(next);
+    try {
+      await navigator.clipboard.writeText(`To: ${profile.email}\nSubject: ${next.subject}\n\n${next.body}`);
+      setNotice("Message copied. Paste it into your email service and send it to " + profile.email + ".");
+    } catch {
+      setNotice("Copy is unavailable in this browser. Select and copy the prepared message below.");
+    }
+  }
 
   return (
     <section id="contact" className="page contact">
@@ -59,37 +75,31 @@ export default function Contact() {
         transition={{ duration: 0.4 }}
       >
         <p className="contact__lede">
-          Open to internships, collaborations, and interesting problems. Send me a message below.
+          Open to internships, collaborations, and interesting problems. Get in touch by email using the form below.
         </p>
 
         <div className="bracket-panel contact__panel">
-          {status === STATUS.SUCCESS ? (
-            <div className="contact__success">
-              <p>Thanks — your message is in my inbox. I'll get back to you soon.</p>
-              <button type="button" className="btn" onClick={() => setStatus(STATUS.IDLE)}>
-                Send another
-              </button>
+          <form className="contact__form" onSubmit={handleSubmit} aria-describedby="contact-help">
+            <p id="contact-help" className="contact__help">This form prepares an email to <a href={`mailto:${profile.email}`}>{profile.email}</a>. You send it from your email app.</p>
+            <label className="contact__label" htmlFor="name">Full name</label>
+            <input className="contact__input" type="text" id="name" name="name" autoComplete="name" maxLength={100} required />
+
+            <label className="contact__label" htmlFor="email">Email address</label>
+            <input className="contact__input" type="email" id="email" name="email" autoComplete="email" maxLength={254} required />
+
+            <label className="contact__label" htmlFor="message">Your message</label>
+            <textarea className="contact__input contact__textarea" id="message" name="message" rows={6} maxLength={3000} required />
+
+            <div className="contact__actions">
+              <button className="btn btn-primary contact__submit" type="submit">Open email app →</button>
+              <button className="btn" type="button" onClick={copyMessage}>Copy message</button>
             </div>
-          ) : (
-            <form className="contact__form" onSubmit={handleSubmit}>
-              <label className="contact__label" htmlFor="name">Full name</label>
-              <input className="contact__input" type="text" id="name" name="name" required />
-
-              <label className="contact__label" htmlFor="email">Email address</label>
-              <input className="contact__input" type="email" id="email" name="email" required />
-
-              <label className="contact__label" htmlFor="message">Your message</label>
-              <textarea className="contact__input contact__textarea" id="message" name="message" rows={6} required />
-
-              <button className="btn btn-primary contact__submit" type="submit" disabled={status === STATUS.SENDING}>
-                {status === STATUS.SENDING ? "Sending…" : "Send Message \u2192"}
-              </button>
-
-              {status === STATUS.ERROR && (
-                <p className="contact__error">Something went wrong — try again, or email me directly at {profile.email}.</p>
-              )}
-            </form>
-          )}
+            <p className="contact__notice" role="status">{notice}</p>
+            {draft && <details className="contact__draft">
+              <summary>View prepared message</summary>
+              <textarea className="contact__input contact__textarea" aria-label="Prepared email message" readOnly value={`To: ${profile.email}\nSubject: ${draft.subject}\n\n${draft.body}`} rows={8} />
+            </details>}
+          </form>
         </div>
 
         <div className="contact__socials">

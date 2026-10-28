@@ -291,10 +291,6 @@ export const research = {
   text: "Independent research analyzing a real-world AI agent security failure, examining sandbox-escape vectors and containment gaps in autonomous LLM systems.",
 };
 
-// Paste your Formspree form endpoint here — find it under Forms (not Account)
-// on formspree.io. It looks like: https://formspree.io/f/xxxxxxxx
-export const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-
 export const nav = [
   { path: "#home", label: "Home" },
   { path: "#about", label: "About" },
