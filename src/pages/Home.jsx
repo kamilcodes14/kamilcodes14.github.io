@@ -10,8 +10,8 @@ export default function Home() {
 
   return (
     <section id="home" className="hero" style={{ backgroundImage: `url(${heroBg})` }}>
-      <div className="hero__overlay" />
       <BlackHoleStars />
+      <div className="hero__overlay" />
       <motion.div
         className="hero__content"
         initial={{ opacity: 0, y: 16 }}
