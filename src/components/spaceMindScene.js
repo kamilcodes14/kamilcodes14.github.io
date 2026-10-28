@@ -2,8 +2,7 @@ import * as THREE from 'three';
 
 // Starfield, event horizon, halo and accretion-disk shaders from SpaceMind.
 // Only lifecycle and container sizing are adapted for the portfolio hero.
-export function createSpaceMindScene(canvas) {
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+export function createSpaceMindScene(canvas, { paused: initialPaused = false } = {}) {
   const mobile = canvas.clientWidth < 700;
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x010105, 0.0035);
@@ -12,7 +11,7 @@ export function createSpaceMindScene(canvas) {
   renderer.setClearColor(0x010105);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.19;
-  let raf = null, last = 0, elapsed = 0, paused = false, visible = true, lost = false;
+  let raf = null, last = 0, elapsed = 0, paused = initialPaused, visible = true, lost = false;
   let mouseX = 0, mouseY = 0;
     // --- CONTINUOUS STARFIELD & DUST ---
     const STAR_COUNT = 3000;
@@ -198,7 +197,7 @@ export function createSpaceMindScene(canvas) {
     raf = null; last = 0;
     if (lost || document.hidden || !visible) return;
     render();
-    if (!paused && !reduced.matches) raf = requestAnimationFrame(animate);
+    if (!paused) raf = requestAnimationFrame(animate);
   }
   function resize() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -225,7 +224,6 @@ export function createSpaceMindScene(canvas) {
   visibilityObserver.observe(canvas);
   canvas.parentElement.addEventListener('pointermove', pointer);
   document.addEventListener('visibilitychange', restart);
-  reduced.addEventListener('change', restart);
   canvas.addEventListener('webglcontextlost', contextLost);
   canvas.addEventListener('webglcontextrestored', contextRestored);
   resize();
@@ -236,7 +234,6 @@ export function createSpaceMindScene(canvas) {
       sizeObserver.disconnect(); visibilityObserver.disconnect();
       canvas.parentElement?.removeEventListener('pointermove', pointer);
       document.removeEventListener('visibilitychange', restart);
-      reduced.removeEventListener('change', restart);
       canvas.removeEventListener('webglcontextlost', contextLost);
       canvas.removeEventListener('webglcontextrestored', contextRestored);
       scene.traverse(object => { object.geometry?.dispose(); object.material?.dispose(); });
