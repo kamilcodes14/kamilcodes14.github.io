@@ -66,6 +66,15 @@ export const education = {
 
 export const certifications = [
   {
+    title: "Astronomy: Exploring Time and Space",
+    issuer: "University of Arizona · Coursera",
+    date: "27 October 2026",
+    dateTime: "2026-10-27",
+    credential: "Certificate of Completion",
+    description: "An online astronomy course taught by Chris Impey.",
+    file: "/certificates/astronomy-exploring-time-and-space.pdf",
+  },
+  {
     title: "Countless Worlds in Our Solar System: Asteroids, Comets, and Meteorites",
     issuer: "Arizona State University · CareerCatalyst",
     date: "23 October 2026",
