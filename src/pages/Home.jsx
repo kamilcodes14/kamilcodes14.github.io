@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { profile, education, heroBadges } from "../data/content";
 import { IconStar, IconGrad, IconPin } from "../components/Icons";
+import BlackHoleStars from "../components/BlackHoleStars";
 import heroBg from "../assets/hero-bg.jpg";
 import "./Home.css";
 
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <section id="home" className="hero" style={{ backgroundImage: `url(${heroBg})` }}>
       <div className="hero__overlay" />
+      <BlackHoleStars />
       <motion.div
         className="hero__content"
         initial={{ opacity: 0, y: 16 }}
@@ -17,7 +19,6 @@ export default function Home() {
         transition={{ duration: 0.6 }}
       >
         <IconStar className="hero__sparkle" />
-        <span className="hero__tagline">{profile.tagline}</span>
         <h1 className="hero__name">{profile.name}</h1>
 
         <div className="hero__meta">
