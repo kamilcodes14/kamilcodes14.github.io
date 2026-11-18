@@ -22,43 +22,55 @@ function LinkedInIcon() {
 
 export default function Contact() {
   const [notice, setNotice] = useState("");
-  const [draft, setDraft] = useState(null);
+  const [isSending, setIsSending] = useState(false);
 
-  function prepareDraft(form) {
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (isSending) return;
+
+    const form = event.currentTarget;
     const fields = new FormData(form);
     const name = String(fields.get("name") || "").trim();
     const email = String(fields.get("email") || "").trim();
     const message = String(fields.get("message") || "").trim();
+
     if (!name || !email || !message) {
       setNotice("Please enter your name, email address, and message.");
-      return null;
+      return;
     }
-    return {
-      subject: `Portfolio enquiry from ${name}`,
-      body: `${message}\n\nFrom: ${name}\nReply email: ${email}`,
-    };
-  }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const next = prepareDraft(event.currentTarget);
-    if (!next) return;
-    setDraft(next);
-    setNotice("Your email draft is ready. Complete sending in your email app. If it did not open, use Copy message below.");
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(next.subject)}&body=${encodeURIComponent(next.body)}`;
-  }
+    fields.set("name", name);
+    fields.set("email", email);
+    fields.set("message", message);
+    fields.set("_subject", `Portfolio enquiry from ${name}`);
 
-  async function copyMessage(event) {
-    const form = event.currentTarget.form;
-    if (!form.reportValidity()) return;
-    const next = prepareDraft(form);
-    if (!next) return;
-    setDraft(next);
+    setIsSending(true);
+    setNotice("Sending your message…");
+
     try {
-      await navigator.clipboard.writeText(`To: ${profile.email}\nSubject: ${next.subject}\n\n${next.body}`);
-      setNotice("Message copied. Paste it into your email service and send it to " + profile.email + ".");
-    } catch {
-      setNotice("Copy is unavailable in this browser. Select and copy the prepared message below.");
+      const response = await fetch("https://formspree.io/f/xbgoyggl", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: fields,
+      });
+
+      if (!response.ok) {
+        let detail = "";
+        try {
+          const result = await response.json();
+          detail = result.errors?.map((item) => item.message).filter(Boolean).join(" ");
+        } catch {
+          // Keep the visitor-facing error useful even if the response isn't JSON.
+        }
+        throw new Error(detail || "The message could not be sent. Please try again.");
+      }
+
+      form.reset();
+      setNotice("Message sent successfully. Thanks for reaching out!");
+    } catch (error) {
+      setNotice(error.message || "Something went wrong. Please try again in a moment.");
+    } finally {
+      setIsSending(false);
     }
   }
 
@@ -80,25 +92,22 @@ export default function Contact() {
 
         <div className="bracket-panel contact__panel">
           <form className="contact__form" onSubmit={handleSubmit} aria-describedby="contact-help">
-            <p id="contact-help" className="contact__help">This form prepares an email to <a href={`mailto:${profile.email}`}>{profile.email}</a>. You send it from your email app.</p>
+            <p id="contact-help" className="contact__help">Send a message directly to my inbox using this form. No email app is needed.</p>
             <label className="contact__label" htmlFor="name">Full name</label>
-            <input className="contact__input" type="text" id="name" name="name" autoComplete="name" maxLength={100} required />
+            <input className="contact__input" type="text" id="name" name="name" autoComplete="name" maxLength={100} required disabled={isSending} />
 
             <label className="contact__label" htmlFor="email">Email address</label>
-            <input className="contact__input" type="email" id="email" name="email" autoComplete="email" maxLength={254} required />
+            <input className="contact__input" type="email" id="email" name="email" autoComplete="email" maxLength={254} required disabled={isSending} />
 
             <label className="contact__label" htmlFor="message">Your message</label>
-            <textarea className="contact__input contact__textarea" id="message" name="message" rows={6} maxLength={3000} required />
+            <textarea className="contact__input contact__textarea" id="message" name="message" rows={6} maxLength={3000} required disabled={isSending} />
 
             <div className="contact__actions">
-              <button className="btn btn-primary contact__submit" type="submit">Open email app →</button>
-              <button className="btn" type="button" onClick={copyMessage}>Copy message</button>
+              <button className="btn btn-primary contact__submit" type="submit" disabled={isSending}>
+                {isSending ? "Sending…" : "Send Message →"}
+              </button>
             </div>
-            <p className="contact__notice" role="status">{notice}</p>
-            {draft && <details className="contact__draft">
-              <summary>View prepared message</summary>
-              <textarea className="contact__input contact__textarea" aria-label="Prepared email message" readOnly value={`To: ${profile.email}\nSubject: ${draft.subject}\n\n${draft.body}`} rows={8} />
-            </details>}
+            <p className="contact__notice" role="status" aria-live="polite">{notice}</p>
           </form>
         </div>
 
