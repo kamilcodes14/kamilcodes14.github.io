@@ -3,9 +3,23 @@ import { certifications } from "../data/content";
 import { IconAward, IconArrowUpRight } from "../components/Icons";
 import "./Credentials.css";
 
+const featuredCertificateFiles = [
+  "/certificates/nasa-space-apps-2026.pdf",
+  "/certificates/nasa-open-science-101.pdf",
+  "/certificates/nasa-open-science-essentials.pdf",
+  "/certificates/astronomy-exploring-time-and-space.pdf",
+];
+
+const orderedCertifications = [
+  ...featuredCertificateFiles
+    .map((file) => certifications.find((certificate) => certificate.file === file))
+    .filter(Boolean),
+  ...certifications.filter((certificate) => !featuredCertificateFiles.includes(certificate.file)),
+];
+
 export default function Certifications() {
   const [showAll, setShowAll] = useState(false);
-  const visibleCertifications = showAll ? certifications : certifications.slice(0, 6);
+  const visibleCertifications = showAll ? orderedCertifications : orderedCertifications.slice(0, 4);
 
   return (
     <section id="certifications" className="page credentials" aria-labelledby="certifications-title">
@@ -31,7 +45,7 @@ export default function Certifications() {
           </article>
         ))}
       </div>
-      {certifications.length > 6 && (
+      {orderedCertifications.length > 4 && (
         <div className="credentials__toggle-wrap">
           <button
             className="credentials__toggle"
@@ -41,7 +55,7 @@ export default function Certifications() {
             onClick={() => setShowAll((current) => !current)}
           >
             <span className="credentials__toggle-icon" aria-hidden="true">{showAll ? "⌃" : "⌄"}</span>
-            {showAll ? "Show Less" : `View All ${certifications.length} Certifications`}
+            {showAll ? "Show Less" : `View All ${orderedCertifications.length} Certifications`}
           </button>
         </div>
       )}
