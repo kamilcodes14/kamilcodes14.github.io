@@ -221,11 +221,11 @@ export const experience = [
 
 export const projects = [
   {
-    name: "Planet X — Sphere X | AI Space Research Assistant",
-    tag: "Personal Project",
-    tech: ["JavaScript", "Three.js", "Supabase", "PostgreSQL", "Groq", "Tavily", "AI/LLM Integration"],
+    name: "Planet X + SpaceMind — AI Astronomy Research Observatory",
+    tag: "Personal Project · Space Research & Scientific Computing",
+    tech: ["Python", "NumPy", "SciPy", "Astropy", "Matplotlib", "RAG", "ChromaDB", "Supabase", "Groq", "Tavily", "JavaScript", "Three.js"],
     blurb:
-      "An interactive space-exploration and research platform that brings the Sphere X 3D universe together with an AI-powered space research assistant. Explore a Three.js space environment, ask research questions, and work with source-grounded information through web and paper research workflows. The platform combines JavaScript, Three.js, Supabase authentication and PostgreSQL-backed data with AI-assisted retrieval and search. Built to make space exploration and research more accessible through one browser-based experience.",
+      "A unified space-exploration and scientific-research platform combining Planet X’s immersive 3D observatory with SpaceMind’s AI-powered astronomy workspace. Python leads the scientific-computing layer: astronomy data analysis, reproducible research workflows, orbital mechanics, exoplanet transit and Gaia catalogue studies, plus a retained local RAG research engine. The platform also supports cited AI research across web and scientific papers, NASA and astronomy data sources, and a Mission Lab for interactive calculations. Built with Python’s scientific ecosystem alongside Supabase-backed accounts and data services, Groq and Tavily integrations, and a Three.js-powered 3D universe.",
     live: "https://kamilcodes14.github.io/planet-x-sphere-x/",
     github: "https://github.com/kamilcodes14/planet-x-sphere-x",
   },
