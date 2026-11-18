@@ -11,7 +11,7 @@ export default function Certifications() {
     <section id="certifications" className="page credentials" aria-labelledby="certifications-title">
       <div className="section-heading credentials__heading"><IconAward /><h2 id="certifications-title">Certifications</h2></div>
       <div className="section-rule credentials__rule" />
-      <div className="credentials__list">
+      <div className="credentials__list" id="certifications-list">
         {visibleCertifications.map((certificate) => (
           <article className={`bracket-panel credential-card${showAll ? "" : " credential-card--preview"}`} key={certificate.file}>
             <h3 className="credential-card__title">{certificate.title}</h3>
