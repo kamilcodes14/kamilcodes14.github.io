@@ -37,11 +37,11 @@ export default function Certifications() {
               <>
                 <p className="credential-card__kind">{certificate.credential}</p>
                 <p className="credential-card__description">{certificate.description}</p>
-                <a className="credential-link" href={certificate.file} target="_blank" rel="noreferrer" aria-label={`View certificate for ${certificate.title} (PDF, opens in a new tab)`}>
-                  View certificate (PDF)<IconArrowUpRight />
-                </a>
               </>
             )}
+            <a className="credential-link" href={certificate.file} target="_blank" rel="noreferrer" aria-label={`View certificate for ${certificate.title} (PDF, opens in a new tab)`}>
+              View certificate (PDF)<IconArrowUpRight />
+            </a>
           </article>
         ))}
       </div>
