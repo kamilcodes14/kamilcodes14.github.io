@@ -29,20 +29,16 @@ export default function Contact() {
     if (isSending) return;
 
     const form = event.currentTarget;
-    const fields = new FormData(form);
-    const name = String(fields.get("name") || "").trim();
-    const email = String(fields.get("email") || "").trim();
-    const message = String(fields.get("message") || "").trim();
+    const message = String(new FormData(form).get("message") || "").trim();
 
-    if (!name || !email || !message) {
-      setNotice("Please enter your name, email address, and message.");
+    if (!message) {
+      setNotice("Please write a message before sending.");
       return;
     }
 
-    fields.set("name", name);
-    fields.set("email", email);
+    const fields = new FormData();
     fields.set("message", message);
-    fields.set("_subject", `Portfolio enquiry from ${name}`);
+    fields.set("_subject", "New message from your portfolio");
 
     setIsSending(true);
     setNotice("Sending your message…");
@@ -92,13 +88,7 @@ export default function Contact() {
 
         <div className="bracket-panel contact__panel">
           <form className="contact__form" onSubmit={handleSubmit} aria-describedby="contact-help">
-            <p id="contact-help" className="contact__help">Send a message directly to my inbox using this form. No email app is needed.</p>
-            <label className="contact__label" htmlFor="name">Full name</label>
-            <input className="contact__input" type="text" id="name" name="name" autoComplete="name" maxLength={100} required disabled={isSending} />
-
-            <label className="contact__label" htmlFor="email">Email address</label>
-            <input className="contact__input" type="email" id="email" name="email" autoComplete="email" maxLength={254} required disabled={isSending} />
-
+            <p id="contact-help" className="contact__help">Write your message below and send it directly to my inbox. No email app or email address is needed.</p>
             <label className="contact__label" htmlFor="message">Your message</label>
             <textarea className="contact__input contact__textarea" id="message" name="message" rows={6} maxLength={3000} required disabled={isSending} />
 
