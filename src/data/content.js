@@ -221,11 +221,11 @@ export const experience = [
 
 export const projects = [
   {
-    name: "Planet X — Interactive Space Exploration",
+    name: "Planet X — Sphere X | AI Space Research Assistant",
     tag: "Personal Project",
-    tech: ["HTML", "CSS", "JavaScript", "Three.js"],
+    tech: ["JavaScript", "Three.js", "Supabase", "PostgreSQL", "Groq", "Tavily", "AI/LLM Integration"],
     blurb:
-      "An interactive space-exploration experience featuring Sphere X, a 3D solar system and a Space AI Brain. It brings planetary exploration and space-focused AI features together in a browser-based experience.",
+      "An interactive space-exploration and research platform that brings the Sphere X 3D universe together with an AI-powered space research assistant. Explore a Three.js space environment, ask research questions, and work with source-grounded information through web and paper research workflows. The platform combines JavaScript, Three.js, Supabase authentication and PostgreSQL-backed data with AI-assisted retrieval and search. Built to make space exploration and research more accessible through one browser-based experience.",
     live: "https://kamilcodes14.github.io/planet-x-sphere-x/",
     github: "https://github.com/kamilcodes14/planet-x-sphere-x",
   },
