@@ -221,20 +221,20 @@ export const experience = [
 
 export const projects = [
   {
-    name: "SpaceMind — Space Research Assistant",
+    name: "Planet X — Sphere X | AI Space Research Assistant",
     tag: "Personal Project",
-    tech: ["JavaScript", "Three.js", "Supabase", "PostgreSQL", "Groq", "Tavily"],
+    tech: ["JavaScript", "Three.js", "Supabase", "PostgreSQL", "Groq", "Tavily", "AI/LLM Integration"],
     blurb:
-      "A space-research workspace with secure sign-in, private saved chats, searchable history, JSON export, and account, appearance, research and privacy settings. Auto, Web and Papers modes combine an imported paper corpus, Semantic Scholar abstracts and web search with source-linked answers, evidence warnings and citation checks. The hosted app uses Supabase Auth, Postgres with row-level security and Edge Functions, with an interactive Three.js universe and responsive mobile interface.",
-    live: "https://spacemind-frontend.vercel.app/",
-    github: "https://github.com/kamilcodes14/Spacemind",
+      "An interactive space-exploration and research platform that brings the Sphere X 3D universe together with an AI-powered space research assistant. Explore a Three.js space environment, ask research questions, and work with source-grounded information through web and paper research workflows. The platform combines JavaScript, Three.js, Supabase authentication and PostgreSQL-backed data with AI-assisted retrieval and search. Built to make space exploration and research more accessible through one browser-based experience.",
+    live: "https://kamilcodes14.github.io/planet-x-sphere-x/",
+    github: "https://github.com/kamilcodes14/planet-x-sphere-x",
   },
   {
-    name: "Space Signal Receiver with RAG",
-    tag: "Personal Project",
+    name: "SSPHex — Space Signal Receiver with RAG",
+    tag: "Personal Project · Radio Astronomy",
     tech: ["Python", "NumPy", "Matplotlib", "Flask", "blimpy", "HDF5", "RAG"],
     blurb:
-      "A Python prototype for narrowband signal analysis, combining linear frequency-drift search, waterfall visualizations and JSON run logs with CLI and Flask interfaces. Supports synthetic spectrograms and bounded Breakthrough Listen telescope-file selections through blimpy. The AI-assisted validation report documents 300 synthetic signal observations, 100 noise-only controls and recovery of the known Voyager 1 carrier in public Green Bank Telescope data. Includes an optional RAG assistant over documents and saved runs; physical RTL-SDR reception remains unvalidated.",
+      "A radio-astronomy signal-analysis prototype that captures or loads spectrogram data, searches for linear frequency drift, generates waterfall plots and records analysis runs. Validated on 300 synthetic signal observations, 100 noise-only controls and a reproduction of the known Voyager 1 signal in Green Bank Telescope data. Includes an optional RAG research assistant; physical RTL-SDR reception has not yet been validated with a real device.",
     live: null,
     github: "https://github.com/kamilcodes14/Space-Signal-Receiver-with-RAG",
   },
