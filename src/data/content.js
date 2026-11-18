@@ -108,6 +108,33 @@ export const certifications = [
     description: "Understanding AI, Autonomy, and the Limits of Human Control · ISBN 978-99993-5-529-2",
     file: "/certificates/eliva-press-publication.pdf",
   },
+  {
+    title: "Galactic Problem Solver — NASA Space Apps Challenge 2026",
+    issuer: "NASA Space Apps Challenge",
+    date: "14–15 November 2026",
+    dateTime: "2026-11-15",
+    credential: "Galactic Problem Solver",
+    description: "Participation in the 2026 NASA Space Apps Challenge.",
+    file: "/certificates/nasa-space-apps-2026.pdf",
+  },
+  {
+    title: "Open Science 101",
+    issuer: "NASA",
+    date: "12 November 2026",
+    dateTime: "2026-11-12",
+    credential: "Certificate of Achievement",
+    description: "NASA Open Science 101 learning program.",
+    file: "/certificates/nasa-open-science-101.pdf",
+  },
+  {
+    title: "Open Science Essentials",
+    issuer: "NASA",
+    date: "12 November 2026",
+    dateTime: "2026-11-12",
+    credential: "Certificate of Achievement",
+    description: "NASA Open Science Essentials learning program.",
+    file: "/certificates/nasa-open-science-essentials.pdf",
+  },
 ];
 
 export const publications = [
